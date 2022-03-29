@@ -1,67 +1,72 @@
-import React, {useState} from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import ItemList from '../components/Showcase/ItemList.js';
+import { Link } from "react-router-dom";
 
 const ItemDiv = styled.div`
   display: flex;
-  flex-direction: row;  
+  justify-content: space-between;
+   //align-items:center;
+  flex-wrap:wrap;
   width: 100%;
-  height: 382px;
+  height: ${(props) => props.height || "100%"};
   margin-right: 20px;
-  background-color: #fad;
-  
-  // ItemList 
+  background-color: #fff;
+
+  @media screen and (max-width: 320px) {
+    display:flex;
+    flex-dirextion: column;
+    gap: 10px;
+  }
 `;
 
-const ItemDivSample = (props) => {
-  const [items, setItems ] = useState([
-    { id: 1, name: "눈사람" },
-    { id: 2, name: "얼음" },
-    { id: 3, name: "눈" },
-    { id: 4, name: "바람" }
-  ]);
-  const [ name, setName ] = useState("");
+const ItemSection = styled.div`
+  width: calc(100% / 4);
+  height: auto;
+  // padding: 0.3rem 0;
+  background-color:#ade;
+`
+const ItemFigure = styled.div`
+  width: 100%;
+  height: 290px;
+  background-color:#55e;
+`
+const ItemFigcaption = styled.div`
+  width: 100%;
+  height: 70px;
+  margin-top: 20px;
+  background-color: #fea;
+  font-size: 24px;
+`
 
-  const addItems = () => {
-    let itemCopy = [...items];
-    let size = items[items.length - 1].id;
-    itemCopy.push({id: size + 1, name: name });
-    setItems(itemCopy);
-  };
-
-  const onChangeHandle = (e) => {
-    let value = e.target.value;
-    setName(value);
-  };
-
-  const onRemoveItem = (id) => {
-    setItems((items) => items.filter((item) => item.id != id));
-  };
+function ItemDivContent(props) {
 
   return (
-    <>
-      <input type="text" value={name} onChange={onChangeHandle} />
-      <buttton onClick={addItems}>add</buttton>
+    <ItemDiv>
+      <ItemSection>
+        <ItemFigure>{props.image}</ItemFigure>
+        <ItemFigcaption>{props.caption}</ItemFigcaption>
+      </ItemSection>
+    </ItemDiv>
+  );
+}
 
-      <div>
-        {items.map((item, index) => {
-          return (
-            <ItemList
-            key={index}
-            item={item}
-            onRemoveItem={onRemoveItem}
-            />
-          );
-        })}
-      </div>
-    </>
-  )
-// return <ItemDiv>
-//         {/* {nameList} */}
-//         {ItemList}
-//        </ItemDiv>;
-};
+export default ItemDivContent;
 
+// const ItemDivContent = (props) => {
+//   console.log(props);
+//    
+//   return (
+//     <ItemDiv>
+//       <ItemCard height={'290px'} />
+//         <Link to="/">
+//           <img alt="" src=""/>
+//         </Link>
+//       <ItemContent></ItemContent>
+//     </ItemDiv>
+//   )
+// }
+// 
+// 
 // const ItemDivSample = () => {
 //     return (
 //         <ItemDiv>
@@ -70,5 +75,3 @@ const ItemDivSample = (props) => {
 //         </ItemDiv>
 //     );
 // };
-
-export default ItemDivSample;
