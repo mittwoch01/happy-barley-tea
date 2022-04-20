@@ -1,28 +1,18 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useLocation } from "react-router";
-import { HeaderSecondTitle } from "../components/common/Common";
+import { HeaderSecondTitle, SectionWrapper } from "../components/common/Common";
 import ItemDiv from "../components/Showcase/ItemDiv.js";
 
 const ShowCaseDiv = styled.div`
   width: 100%;
-  background-color: rgba(51, 51, 20);
-`;
-
-const ShowCaseWapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
   height: auto;
-  padding: 0 22px 0 22px;
+  background-color: rgba(51, 51, 51);
 `;
 
 const ShowCaseTitle = styled.div`
   width: 100%;
   height: 100%;
-  padding-top: 50px;
 `;
 
 const NewInfo = styled.div`
@@ -30,13 +20,13 @@ const NewInfo = styled.div`
   z-index: 100;
   width: 100%;
   height: 880px;
-  margin: 104px 0 100px 0;
+  margin: 144px 0 100px 0;
 `;
 
 const NewInfoImg = styled.div`
   width: 100%;
   height: 100%;
-  background-color: #fee;
+  background-color: #777;
 `;
 const NewCaption = styled.div`
   position: absolute;
@@ -59,13 +49,13 @@ const NewCaption = styled.div`
   }
 `;
 
-const WorkInWinter = styled.div`
+const WorkInNew = styled.div`
   display: flex;
   flex-direction: row;
   width: 100%;
   height: 580px;
-  margin-bottom: 80px;
-  background-color: #3c536e;
+  margin-bottom: 20px;
+  background-color: #FFC461;
   figure {
     width: 840px;
     height: 580px;
@@ -74,7 +64,7 @@ const WorkInWinter = styled.div`
   figcaption {
     padding: 0 40px 0 40px;
     font-size: 32px;
-    color: #fff;
+    color: #000;
     line-height: 580px;
   }
 `;
@@ -83,7 +73,7 @@ const Item = styled.div`
   width: 100%;
   height: 382px;
   margin-bottom: 40px;
-  background-color: #fff;
+  //background-color: #fff;
 `;
 
 const ListTitle = styled.div`
@@ -123,16 +113,9 @@ const ShowCase = () => {
     window.scrollTo(0, 0);
   }, [pathname]);
 
-  const expenses = [
-    { image : 'img_01', caption: '클래식한 프레피룩의 유쾌한 반란'},
-    { image : 'img_02', caption: '스타들의 베리 페리 룩'},
-    { image : 'img_03', caption: '트렌치코트 스타 일링 포인트 5'},
-    { image : 'img_04', caption: '어떤 청바지를 입을까'}
-  ];
-
   return (
     <ShowCaseDiv>
-      <ShowCaseWapper>
+      <SectionWrapper width="1320px" padding="90px 0  100px">
         <ShowCaseTitle>
           <HeaderSecondTitle fontSize={"44px"} color="#fff" >showcase</HeaderSecondTitle>
         </ShowCaseTitle>
@@ -147,23 +130,12 @@ const ShowCase = () => {
             </dl>
           </NewCaption>
         </NewInfo>
-        <WorkInWinter>
+        <WorkInNew>
           <figure>img</figure>
-          <figcaption>만나서 반가워요</figcaption>
-        </WorkInWinter>
+          <figcaption>봄 맞이 폰꾸 스타일 5</figcaption>
+        </WorkInNew>
         <Item>
-          <ItemDiv 
-            image={expenses[0].image} 
-            caption={expenses[0].caption} />
-          <ItemDiv 
-            image={expenses[1].image} 
-            caption={expenses[1].caption} />
-          <ItemDiv 
-            image={expenses[2].image} 
-            caption={expenses[2].caption} />
-          <ItemDiv 
-            image={expenses[3].image} 
-            caption={expenses[3].caption} />
+          <ItemDiv />
         </Item>
         <ListTitle>
           <HeaderSecondTitle color="#fff" fontSize={"44px"}>showcase list</HeaderSecondTitle>
@@ -186,7 +158,7 @@ const ShowCase = () => {
             <figcaption>빵순이를 위한 건강 빵집 4</figcaption>
           </ListDiv>
         </ShowCaseList>
-      </ShowCaseWapper>
+      </SectionWrapper>
     </ShowCaseDiv>
   );
 };

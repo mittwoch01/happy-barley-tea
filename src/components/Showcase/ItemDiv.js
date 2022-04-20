@@ -1,16 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from "react-router-dom";
+import ItemSection from "./ItemSection";
 
 const ItemDiv = styled.div`
   display: flex;
   justify-content: space-between;
-   //align-items:center;
+  align-items:center;
   flex-wrap:wrap;
   width: 100%;
   height: ${(props) => props.height || "100%"};
-  margin-right: 20px;
-  background-color: #fff;
+  margin-top: 40px;
+  //margin-right: 20px;
+  //background-color: #fff;
 
   @media screen and (max-width: 320px) {
     display:flex;
@@ -19,59 +21,32 @@ const ItemDiv = styled.div`
   }
 `;
 
-const ItemSection = styled.div`
-  width: calc(100% / 4);
-  height: auto;
-  // padding: 0.3rem 0;
-  background-color:#ade;
-`
-const ItemFigure = styled.div`
-  width: 100%;
-  height: 290px;
-  background-color:#55e;
-`
-const ItemFigcaption = styled.div`
-  width: 100%;
-  height: 70px;
-  margin-top: 20px;
-  background-color: #fea;
-  font-size: 24px;
-`
-
 function ItemDivContent(props) {
+
+  const expenses = [
+    { image : 'img_01', caption: '클래식한 프레피룩의 유쾌한 반란'},
+    { image : 'img_02', caption: '스타들의 베리 페리 룩'},
+    { image : 'img_03', caption: '트렌치코트 스타 일링 포인트 5'},
+    { image : 'img_04', caption: '어떤 청바지를 입을까'}
+  ];
 
   return (
     <ItemDiv>
-      <ItemSection>
-        <ItemFigure>{props.image}</ItemFigure>
-        <ItemFigcaption>{props.caption}</ItemFigcaption>
-      </ItemSection>
+      <ItemSection 
+        image={expenses[0].image} 
+        caption={expenses[0].caption} />
+      <ItemSection 
+        image={expenses[1].image} 
+        caption={expenses[1].caption} />
+      <ItemSection 
+        image={expenses[2].image} 
+        caption={expenses[2].caption} />
+      <ItemSection 
+        image={expenses[3].image} 
+        caption={expenses[3].caption} />
     </ItemDiv>
   );
 }
 
 export default ItemDivContent;
 
-// const ItemDivContent = (props) => {
-//   console.log(props);
-//    
-//   return (
-//     <ItemDiv>
-//       <ItemCard height={'290px'} />
-//         <Link to="/">
-//           <img alt="" src=""/>
-//         </Link>
-//       <ItemContent></ItemContent>
-//     </ItemDiv>
-//   )
-// }
-// 
-// 
-// const ItemDivSample = () => {
-//     return (
-//         <ItemDiv>
-//           <figure>img</figure>
-//           <figcaption>나홀로 즐겁게 혼밥</figcaption>
-//         </ItemDiv>
-//     );
-// };
